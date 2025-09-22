@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://codxkg31il8w7"]
+
+[ext_resource type="Texture2D" uid="uid://c8mlch8iwb873" path="res://Assets/enemies/enemy1.png" id="1_34ihc"]
+[ext_resource type="Script" uid="uid://ckhse2h4n7e1u" path="res://Scenes/enemies/enemy_1.gd" id="1_ypfft"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ypfft"]
+radius = 42.107
+
+[node name="enemy1" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_ypfft")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_34ihc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ypfft")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
