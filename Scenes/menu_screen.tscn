@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3a7awwbl8hr1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jdq6f"]
+
+[node name="menuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menuBackground" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 900.0
+texture = SubResource("PlaceholderTexture2D_jdq6f")
+
+[node name="menuButtons" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -500.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menuButtons"]
+layout_mode = 2
+
+[node name="startButton" type="Button" parent="menuButtons/VBoxContainer"]
+layout_mode = 2
+
+[node name="settingsButton" type="Button" parent="menuButtons/VBoxContainer"]
+layout_mode = 2
+
+[node name="quitButton" type="Button" parent="menuButtons/VBoxContainer"]
+layout_mode = 2
