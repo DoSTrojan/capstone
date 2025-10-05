@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ypfft"]
 radius = 42.107
 
-[node name="enemy1" type="CharacterBody2D"]
+[node name="enemy_1" type="CharacterBody2D"]
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ypfft")
@@ -19,9 +19,3 @@ shape = SubResource("CircleShape2D_ypfft")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

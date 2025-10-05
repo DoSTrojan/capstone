@@ -1,14 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c7mfgmlib5uj3"]
 
 [ext_resource type="Texture2D" uid="uid://c7x4a2qrx025n" path="res://Assets/maps/map1.png" id="1_o2qai"]
-[ext_resource type="PackedScene" uid="uid://codxkg31il8w7" path="res://Scenes/enemies/enemy1.tscn" id="2_sb70v"]
+[ext_resource type="PackedScene" uid="uid://codxkg31il8w7" path="res://Scenes/enemies/enemy_1.tscn" id="2_sb70v"]
 [ext_resource type="PackedScene" uid="uid://bbvnay44idkxq" path="res://Scenes/buildings/base.tscn" id="3_0ksuw"]
-[ext_resource type="PackedScene" uid="uid://cnyqm33fg4g1a" path="res://Scenes/buildings/wall.tscn" id="4_0ksuw"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_sb70v"]
-vertices = PackedVector2Array(36.6094, 859.047, 8.64844, 145.656, 37.3281, 160.289, 55.4297, 485.93, 854.969, 863.992, 1437.06, 828.57, 1457.25, 842.211, 1492.93, 842.43, 1484.55, 840.352, 255.828, 72.8828, 79.25, 128.594, 75.5938, 64.3125, 1446.5, 103.758, 366.398, 81.2266, 1445.31, 810, 1566.3, 814.758, 1486.34, 820.18)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5, 6), PackedInt32Array(7, 4, 6), PackedInt32Array(7, 6, 8), PackedInt32Array(9, 10, 11), PackedInt32Array(9, 11, 12), PackedInt32Array(13, 9, 12), PackedInt32Array(14, 13, 12, 15, 16)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(47, 154, 65, 478, 1565, 850, 855, 874, 27, 869, -2, 129), PackedVector2Array(65, 54, 70, 142, 257, 83, 363, 91, 1460, 832, 1578, 824, 1455, 94)])
+[ext_resource type="PackedScene" uid="uid://clbucf7a75iqj" path="res://Scenes/buildings/spawner.tscn" id="4_0ksuw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb70v"]
 texture = ExtResource("1_o2qai")
@@ -4819,10 +4814,12 @@ tile_size = Vector2i(20, 20)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_sb70v")
 
-[node name="Map" type="Node2D"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0ksuw"]
+vertices = PackedVector2Array(1594, 6.82813, 1594, 890.961, 3.75781, 886.031, -17.75, -20.8203)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -4, 1604, -3, 1604, 901, -6, 896)])
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_sb70v")
+[node name="Map" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_0ksuw")
@@ -4831,21 +4828,15 @@ tile_set = SubResource("TileSet_0ksuw")
 texture = ExtResource("1_o2qai")
 centered = false
 
-[node name="enemy" parent="." node_paths=PackedStringArray("base") instance=ExtResource("2_sb70v")]
+[node name="enemy" parent="." instance=ExtResource("2_sb70v")]
 position = Vector2(110, 113)
-base = NodePath("../base")
 
-[node name="base" parent="." instance=ExtResource("3_0ksuw")]
+[node name="base" parent="." groups=["base"] instance=ExtResource("3_0ksuw")]
 position = Vector2(1500, 774)
 
-[node name="wall" parent="." instance=ExtResource("4_0ksuw")]
-position = Vector2(301, 258)
+[node name="spawner" parent="." instance=ExtResource("4_0ksuw")]
+position = Vector2(490, 292)
 
-[node name="wall2" parent="." instance=ExtResource("4_0ksuw")]
-position = Vector2(107, 258)
-
-[node name="wall3" parent="." instance=ExtResource("4_0ksuw")]
-position = Vector2(302, 158)
-
-[node name="wall4" parent="." instance=ExtResource("4_0ksuw")]
-position = Vector2(203, 258)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_0ksuw")
