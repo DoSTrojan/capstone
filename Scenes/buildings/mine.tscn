@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://n4bakrlpecti"]
+
+[ext_resource type="Script" uid="uid://c03hvb1rwpgpu" path="res://Scenes/buildings/mine.gd" id="1_n7hia"]
+[ext_resource type="Texture2D" uid="uid://ca45gqypgk5j7" path="res://Assets/buildings/Towers/Combat Towers Projectiles/spr_tower_cannon_projectile.png" id="2_8338d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivckm"]
+radius = 55.2268
+
+[node name="mine" type="Area2D"]
+script = ExtResource("1_n7hia")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_8338d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ivckm")
+
+[node name="RadiusDisplay" type="Line2D" parent="."]

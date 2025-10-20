@@ -1,20 +1,13 @@
 extends CharacterBody2D
 
-@export var speed: float = 80.0
-@export var health: int = 1
+@export var speed: float = 60.0
+@export var health: int = 2
 
-signal died(value: int)  # Signal to emit when enemy dies, value = enemy's max health
-
-var max_health: int
 var base_ref: Node2D
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
-	# Store the initial health as max health
-	max_health = health
-	
 	$AnimatedSprite2D.play()
-	
 	# Find the base in the scene
 	base_ref = get_tree().get_first_node_in_group("base")
 	if base_ref:
@@ -24,7 +17,7 @@ func _physics_process(delta: float):
 	if base_ref == null:
 		return
 
-	# Continuously update target in case base moves
+	# Continuously update target in case base moves (yours doesn’t, but this is safe)
 	agent.target_position = base_ref.global_position
 
 	# Get next navigation point
@@ -40,11 +33,9 @@ func _physics_process(delta: float):
 func take_damage(amount: int):
 	health -= amount
 	if health <= 0:
-		# Emit the max_health as score
-		emit_signal("died", max_health)
 		queue_free()
 
 func attack_base():
-	# Placeholder – damage base’s health
+	# Placeholder – you can add logic to damage base’s health
 	print("Enemy reached the base!")
 	queue_free()

@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqrw6c5efpi8p"]
+
+[ext_resource type="Script" uid="uid://bwq268ewjbhru" path="res://Scenes/enemies/enemy_2.gd" id="1_wie23"]
+[ext_resource type="Texture2D" uid="uid://c1bto8687cqbg" path="res://Assets/enemies/Slime.png" id="3_ajsqu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ypfft"]
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mteat"]
+atlas = ExtResource("3_ajsqu")
+region = Rect2(256, 128, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq1gq"]
+atlas = ExtResource("3_ajsqu")
+region = Rect2(288, 128, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igv7o"]
+atlas = ExtResource("3_ajsqu")
+region = Rect2(320, 128, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c072b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mteat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq1gq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igv7o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enemy_2" type="CharacterBody2D" groups=["enemy"]]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_wie23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ypfft")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_c072b")

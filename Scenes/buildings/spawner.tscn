@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://clbucf7a75iqj"]
 
 [ext_resource type="Script" uid="uid://ciaifa0tmhe5v" path="res://Scenes/buildings/spawner.gd" id="1_c1w3e"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bfujp"]
+[ext_resource type="Texture2D" uid="uid://beoxho4cjk6gy" path="res://Assets/maps/GRASS+.png" id="2_4r7ua"]
 
 [node name="spawner" type="Node2D"]
 script = ExtResource("1_c1w3e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(31.25, 31.25)
-scale = Vector2(63.5, 63.5)
-texture = SubResource("PlaceholderTexture2D_bfujp")
+texture = ExtResource("2_4r7ua")
+region_enabled = true
+region_rect = Rect2(208, 112, 16, 16)

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7py21pl0aw3h"]
+
+[ext_resource type="Script" uid="uid://codj27w5f6i2v" path="res://tower.gd" id="1_84vg6"]
+[ext_resource type="Texture2D" uid="uid://cqlky0hbsets3" path="res://Assets/buildings/Towers/Combat Towers/spr_tower_lightning_tower.png" id="2_33j2i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_33j2i"]
+radius = 19.6977
+
+[node name="tower" type="Node2D"]
+script = ExtResource("1_84vg6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_33j2i")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="RadiusDisplay" type="Line2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_33j2i")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
