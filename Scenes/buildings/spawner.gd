@@ -37,7 +37,7 @@ func _ready():
 	# Make sure Sprite2D is visible and uses region
 	$Sprite2D.visible = true
 	$Sprite2D.region_enabled = true
-	$Sprite2D.scale = Vector2(2, 2)  # optional for testing visibility
+	$Sprite2D.scale = Vector2(2, 2) 
 
 	update_sprite()
 

@@ -27,7 +27,7 @@ func spawn_base_center():
 	var base_instance = base_scene.instantiate()
 	
 	# Center of the game world
-	var map_size = Vector2(1600, 900)  # your map size in pixels
+	var map_size = Vector2(1600, 900)  # map size in pixels
 	base_instance.position = map_size / 2
 	
 	add_child(base_instance)

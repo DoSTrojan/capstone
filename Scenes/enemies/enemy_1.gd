@@ -45,6 +45,5 @@ func take_damage(amount: int):
 		queue_free()
 
 func attack_base():
-	# Placeholder – damage base’s health
 	print("Enemy reached the base!")
 	queue_free()
